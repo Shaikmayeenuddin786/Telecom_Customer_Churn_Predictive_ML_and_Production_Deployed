@@ -78,7 +78,7 @@ telecom-churn/
 
 
 ---
-## progression
+## Progression
 
 Layer 1: Power BI — insight discovery & business storytelling
 Layer 2: API — production-grade ML inference
