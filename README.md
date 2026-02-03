@@ -1,58 +1,67 @@
-# Telecom - Customer Churn End-to-End (Predictive ML + Production Deployment) | Risk Segmentation, Retention Optimization
+# Telecom - Customer Churn End-to-End (Predictive ML + Production Deployment) | Risk Segmentation & Retention Optimization
+
+---
 
 ## **Quick Section Summary**
-- Business Problem – Telecom operators face revenue loss due to high customer churn and lack of early warning signals to identify at-risk customers.
-- Objectives – To analyze churn drivers, predict churn risk using machine learning, and enable proactive retention strategies through interactive BI and real-time scoring.
-- Technical Stack – Power BI (DAX, Power Query), Python (Pandas, NumPy, Scikit-learn), SQL, Random Forest / XGBoost, Jupyter Notebook, FastAPI, Docker.
-- Project Features – Built an end-to-end churn solution combining data analysis, predictive modeling, an interactive Power BI dashboard, and a deployed REST API for real-time churn prediction.
-- Repository Structure – Organized into data, SQL, Python (ML), model artifacts, API service, and documentation folders for modular development and deployment.
-- Top Business Insights & Recommendations – Identified high-risk churn segments (month-to-month contracts, low tenure, electronic payments) and proposed targeted retention actions with potential to recover lost revenue and improve customer lifetime value.
 
-
-## Project Overview
-
-This project aims to analyze telecom customer behavior and predict churn using machine learning, SQL, and Power BI. The goal is to help telecom companies identify at-risk customers and take proactive steps to improve retention.
-Using data analysis, we modeled churn behavior and created an interactive dashboard that provides key demographic, geographic, and behavioral insights to support business decisions.
+- **Business Problem**
+- **Objectives**
+- **Technical Stack** 
+- **Project Features**
+- **Start-to-end pipeline**
+- **Repository Structure**
+- **Dashboard Snapshots**
+- **Top 10 Churn Reasons and Recommended Solutions to Sales, Marketting and Leadership teams to Reduce Churn significantly**
 
 ---
 
-## Business Problem
+## **Why This Project**
+This project demonstrates an end-to-end ML deployment: **data → model → API → containerized service.**
+It’s built for real-world decisioning (risk segmentation, retention revenue estimation, actionable reasons per customer).
+It reflects a practical, business-focused approach to applying analytics for real-world impact in the **Telecom industry.**
 
-Customer churn remains a serious challenge for telecoms, with rates nearing 27%, leading to lost revenue and higher acquisition costs.
-Churn patterns differ by region, age, and service, but sales teams lack actionable insights to respond quickly.
-By predicting who’s likely to leave, and understanding their reasons, teams can focus retention efforts on high-risk groups and minimize future losses.
 
----
+## **Business Problem**
 
-## Objectives
+Telecom providers face persistently high customer churn, often exceeding 25%, which directly impacts recurring revenue and increases customer acquisition costs.
+Churn behavior varies widely across customer segments based on tenure, contract type, and service usage, however sales & marketing teams lack timely, data-driven signals to intervene before customers leave.
+Without predictive insight into who is at risk and why, retention campaigns remain reactive and inefficient, resulting in missed opportunities to protect revenue and improve customer lifetime value.
+
+
+## **Objectives**
 
 - Predict customers who are likely to churn using historical data.
 - Analyze churn patterns across age, gender, state, services, contract type, and more.
 - Deliver actionable insights via a Power BI dashboard.
-- Enable leadership teams to track churn KPIs in real time.
+- Enable marketing and sales teams to track churn KPIs in real time.
+
+
+## **Technical Stack**
+
+Power BI (DAX, Power Query), Python (Pandas, NumPy, Scikit-learn), SQL, Random Forest / XGBoost, Jupyter Notebook, FastAPI, Docker.
 
 ---
+# **Project Features**
 
-## Why this project
-This project demonstrates an end-to-end ML deployment: 
-data → model → API → containerized service.
-It’s built for real-world decisioning (risk segmentation, retention revenue estimation, actionable reasons per customer)
+**“I intentionally kept the ***Power BI dashboard and the churn prediction API decoupled.***
+This ensured demo reliability, avoided unnecessary cloud costs, and kept the architecture clean.
+If required, the API can be integrated into Power BI using DirectQuery or REST.”**
 
-##  A Dockerized FastAPI service that loads a trained Random Forest churn model, returns batch predictions with probabilities, risk levels, business summary metrics, and human-readable key factors.
+- **Layer 1:** Power BI — insight discovery & business storytelling
+- **Layer 2:** API — production-grade ML inference
 
-Model trained offline (Jupyter) → artifacts saved → FastAPI loads artifacts → Docker container serves REST endpoint → Swagger / PowerShell / Power BI call the endpoint for live scoring.
+- Built an end-to-end churn solution combining data analysis, predictive modeling, an interactive Power BI dashboard, and a deployed REST API for real-time churn prediction.
+- A Dockerized FastAPI service that loads a trained Random Forest churn model, returns batch predictions with probabilities, risk levels, business summary metrics, and human-readable key factors.
+- Model trained offline (Jupyter) → artifacts saved → FastAPI loads artifacts → Docker container serves REST endpoint → Swagger / PowerShell / Power BI call the endpoint for live scoring.
+   - **Batch inference**  via `/predict` (accepts multiple customer records)
+   - **Per-customer:** prediction, probability, risk level, and key factors
+   - **Business summary:** churn rate, churn count, retention revenue potential
+   - Swagger UI documentation (auto-generated)
+   - Dockerized for easy local or cloud deployment
 
-## Features
-- Batch inference via `/predict` (accepts multiple customer records)
-- Per-customer: prediction, probability, risk level, and key factors
-- Business summary: churn rate, churn count, retention revenue potential
-- Swagger UI documentation (auto-generated)
-- Dockerized for easy local or cloud deployment
 
 
----
-
-# Start-to-end pipeline (concise steps)
+## **Start-to-end pipeline (concise steps)**
 1. **Data collection** — gather raw customer/usage, billing, and interaction data.  
 2. **Exploration & cleaning** — EDA, missing value handling, consistent naming, save training snapshot.  
 3. **Feature engineering** — tenure, averages, contract flags, payment method encodings.  
@@ -63,9 +72,9 @@ Model trained offline (Jupyter) → artifacts saved → FastAPI loads artifacts 
 8. **Local test** — Swagger, PowerShell, batch requests.  
 9. **Deploy** — API using FastAPI + Docker
 
----
 
-## Repository structure
+
+## **Repository Structure**
 ```
 telecom-churn/
 ├── api/
@@ -85,20 +94,20 @@ telecom-churn/
 
 
 ---
-## Progression
 
-Layer 1: Power BI — insight discovery & business storytelling
-Layer 2: API — production-grade ML inference
+# **Dashboard Snapshots**
 
-“I intentionally kept the Power BI dashboard and the churn prediction API decoupled.
-This ensured demo reliability, avoided unnecessary cloud costs, and kept the architecture clean.
-If required, the API can be integrated into Power BI using DirectQuery or REST, but for portfolio and interview purposes, separation was the most practical design choice.”
+###  Dashboard Summary
+#### Created multiple pages:
+  - **1.Summary Dashboard**: High-level KPIs (Churn %, Customer Count, Joiners)
+  - **2. Prediction Dashboard**: Predicted Churners with filters and breakdowns
+#### Used DAX measures, slicers, and drill-through filters to explore:
+  - Churn by State, Age, Gender, Contract, Payment Type, Services
+  - Churn by Category (e.g., Competition, Price, Dissatisfaction)
 
+![Churn Analysis Summary_1](https://github.com/user-attachments/assets/6a693308-3202-4598-9272-b8fa56bcf756)
 
----
-
-## Executive Summary and Project Workflow
-**(A high-level summary)**
+**(A high-level Page 1 summary)**
 
 - Top Summary Box: Shows basics—6,418 total customers, 411 new joiners, 1,732 churned (27% rate).
 - Gender Pie: Males (64%) churn more than females (36%).
@@ -111,10 +120,10 @@ If required, the API can be integrated into Power BI using DirectQuery or REST, 
 - Prediction Side: Flags 376 at-risk customers; profiles show mostly females (65%), short-tenure (month-to-month 94%), in states like Uttar Pradesh.
 
 
----
 
-## Insights Deep Dive
-**(A high-level summary of key churn findings)**
+![Churn Analysis Prediction_2](https://github.com/user-attachments/assets/7beef630-e2f8-4ef9-a2ca-e084234c7cee)
+
+**(A high-level Page 2 summary of key churn findings)**
 
 - The overall customer churn rate is **27%.**
 - Older customers (50+) and those on month-to-month contracts are most at risk.
@@ -126,24 +135,19 @@ If required, the API can be integrated into Power BI using DirectQuery or REST, 
 - Not having device protection services increases churn risk by **30-40%.**
 - **44%** of churners leave for competitors, highlighting the importance of attractive bundles.
 
----
 
-#  Dashboard Snapshots
 
-###  Dashboard Summary
-- Power BI Report: Screenshot
-![Churn Analysis Summary_1](https://github.com/user-attachments/assets/6a693308-3202-4598-9272-b8fa56bcf756)
-![Churn Analysis Prediction_2](https://github.com/user-attachments/assets/7beef630-e2f8-4ef9-a2ca-e084234c7cee)
 
 ### Relationship Table Mapping
 ![Mapping_Tables](https://github.com/user-attachments/assets/1baf0c78-1b38-4af8-8342-fa5e1b82e84b)
 
 ---
-# Top 10 Churn Reasons – ( Insights from Churn Analysis Projects):
-### (Prioritized key factors driving churn, highlighting areas for targeted action)
 
 
-## Sorted by Impact Priority
+# **Top Churn Reasons and Recommended Solutions**
+## **Top 10 Churn Reasons:**
+### Sorted by Impact Priority
+
 - **High Monthly Charges:** Customers paying higher-than-average fees often leave due to perceived lack of value or pricing dissatisfaction.
 - **Month-to-Month Contracts:** Customers on short-term, flexible plans are more likely to churn compared to annual or two-year contracts.
 - **Low Tenure / New Customers:** Newer customers (0–12 months) are more likely to churn, often due to unmet expectations or poor onboarding.
@@ -155,8 +159,10 @@ If required, the API can be integrated into Power BI using DirectQuery or REST, 
 - **Lack of Loyalty Incentives:** Absence of targeted offers, discounts, or retention strategies contributes to early exits.
 - **No Paperless Billing or AutoPay:** Indicates lower engagement or trust, often a churn signal.
 
-# _____________________________________
-# Offered Recommended Solutions to Sales & Marketting and Leadership team to Reduce Churn significantly:
+
+
+# Top 10 Recommended Solutions to Sales, Marketting and Leadership teams to Reduce Churn significantly:
+### Sorted by Impact Priority
 
 - **Target At-Risk Segments Proactively:** Use churn risk scores to send retention offers or personalized support to high-risk customers.
 - **Promote LongTerm Contracts:** Offer discounts or loyalty perks for customers who switch from month-to-month to 1- or 2-year plans.
@@ -170,60 +176,21 @@ If required, the API can be integrated into Power BI using DirectQuery or REST, 
 - **Incentivize Paperless Billing and AutoPay:** Offer small credits or priority support to customers who switch to these options (shows commitment).
 
 
-
----
-
-# **Tools Used**
-
-Power BI , ML, SQL, Python, Scikit-learn, XGBoost /Random Forest , Jupyter*
-
-### 1. **Data Cleaning & Preparation (SQL Server)**
-- Cleaned and filtered the raw telecom dataset using SQL queries.
-- Created SQL Views for:
-  - `Churned Customers`
-  - `Joined Customers`
-  - `Monthly Charge & Tenure Buckets`
-
-### 2. **Churn Prediction Modeling (Python)**
-- Preprocessed the data using Pandas (encoding, missing values, feature selection).
-- Trained a **Random Forest Classifier**:
-  - Accuracy: **~81%**
-  - Evaluated using Confusion Matrix, Precision, Recall, and F1-score.
-- Identified key churn drivers (e.g., Contract Type, Device Protection, Tenure).
-
-### 3. **Dashboarding (Power BI)**
-#### Created multiple pages:
-  - **Summary Dashboard**: High-level KPIs (Churn %, Customer Count, Joiners)
-  - **Prediction Dashboard**: Predicted Churners with filters and breakdowns
-#### Used DAX measures, slicers, and drill-through filters to explore:
-  - Churn by State, Age, Gender, Contract, Payment Type, Services
-  - Churn by Category (e.g., Competition, Price, Dissatisfaction)
-
----
-
-##  How to Use
+##  **How to run**
 
 1. Clone the repo or download as ZIP.
 2. Open the `.pbix` file in Power BI Desktop to explore the dashboard.
 3. Open `telecom_churn_model.ipynb` in Jupyter to review or retrain the ML model.
 4. Check SQL folder for the views used in ETL processing.
 
+
 ---
 
-##  Author & Acknowledgment
- Shaik Mayeenuddin
- Aspiring Data Scientist Professional | Supply Chain & Marketing Analytics Expert
- Pursuing a Master’s in Data Science (AI & ML) Student
+# Author
+
+### **Shaik Mayeenuddin**
+***Aspiring Data Scientist Professional | Supply Chain & Marketing Analytics Expert Pursuing a Master’s in Data Science (AI & ML) Student***
 🔗 https://www.linkedin.com/in/shaikmayeenuddin
-
-### This project demonstrates my complete end-to-end capability—from data ingestion and cleaning, through ETL pipelines, modeling, and dashboarding, to actionable business insights. I architected, modeled, validated, visualized, and strategically interpreted the data throughout.
-
-- **Data Engineering & ETL** – Built SQL-import pipelines , (Power BI, Python) for real-time insights  
-- **Data Cleaning & Modeling** – Processed and stored 50K+ records using Pandas, NumPy, and robust normalization techniques  
-- **Analytical Modeling** – Developed Random Forest churn-prediction model with 85% validation accuracy  
-- **Dashboards & Visualization** – Created five cross-functional Power BI dashboards featuring KPI slicers, bookmarks, and custom UX  
-- **Strategic Insights & Recommendations** – Presented actionable data findings to senior leadership (140+ stakeholders) to drive retention, inventory, and content strategy  
-- **Performance Monitoring & Automation** – Implemented real-time alerting and monitoring using Power BI Service, SQL jobs, and Kubernetes for pipeline status
 
 
  This project is built upon the foundational work by **Pivotalstats** . 
