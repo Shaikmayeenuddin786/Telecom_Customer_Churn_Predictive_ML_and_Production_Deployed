@@ -1,6 +1,12 @@
-#  Telecom Customer Churn Analysis & Prediction | Churn Risk Segmentation, Predictive Modeling, Proactive retention strategies.
+# Telecom - Customer Churn End-to-End (Predictive ML + Production Deployment) | Risk Segmentation, Retention Optimization
 
-
+## **Quick Section Summary**
+- Business Problem – Telecom operators face revenue loss due to high customer churn and lack of early warning signals to identify at-risk customers.
+- Objectives – To analyze churn drivers, predict churn risk using machine learning, and enable proactive retention strategies through interactive BI and real-time scoring.
+- Technical Stack – Power BI (DAX, Power Query), Python (Pandas, NumPy, Scikit-learn), SQL, Random Forest / XGBoost, Jupyter Notebook, FastAPI, Docker.
+- Project Features – Built an end-to-end churn solution combining data analysis, predictive modeling, an interactive Power BI dashboard, and a deployed REST API for real-time churn prediction.
+- Repository Structure – Organized into data, SQL, Python (ML), model artifacts, API service, and documentation folders for modular development and deployment.
+- Top Business Insights & Recommendations – Identified high-risk churn segments (month-to-month contracts, low tenure, electronic payments) and proposed targeted retention actions with potential to recover lost revenue and improve customer lifetime value.
 
 
 ## Project Overview
@@ -60,6 +66,7 @@ Model trained offline (Jupyter) → artifacts saved → FastAPI loads artifacts 
 ---
 
 ## Repository structure
+```
 telecom-churn/
 ├── api/
 │ ├── main.py # FastAPI app (predict endpoint)
@@ -74,7 +81,7 @@ telecom-churn/
 │  ├── churn_model.pkl
 │  └── label_encoders.pkl
 ├── Dockerfile
-
+```
 
 
 ---
